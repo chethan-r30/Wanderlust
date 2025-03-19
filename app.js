@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 const Listing = require("../wanderlust/models/listing.js");
 
 app.get("/", (req, res) => {
-    res.send("hi i am root")
+    res.send("hi i am root");
 });
 
 //index route
