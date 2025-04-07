@@ -36,12 +36,17 @@ app.get("/listings/new", (req,res)=>{
 
 //create roiute
 
-app.post("/listings", async(req,res)=>{
+app.post("/listings", async(req,res,next)=>{
   //let{title,description,image,price,location,country}=req.body;
-   let listing = req.body.listing;
-   const newListing =new Listing(listing) ;
-   await newListing.save();
-   res.redirect("/listings");
+  try{
+    let listing = req.body.listing;
+    const newListing =new Listing(listing) ;
+    await newListing.save();
+    res.redirect("/listings");
+  }catch(err){
+    next(err);
+  }
+   
 });
 
 //edit route
@@ -83,6 +88,11 @@ app.delete("/listings/:id", async (req,res) =>{
 //     console.log("sample was saved");
 //     res.send ("successful testing");
 // });
+app.use((err,req,res,next)=>{
+  res.send("Something went wrong!!");
+});
+
+
 
 app.listen(8080, () => {
     console.log("server is listening to port");
