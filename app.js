@@ -28,7 +28,8 @@ app.get("/", (req, res) => {
 const validateListing =(req,res,next) =>{
   let {error} = listingSchema.validate(req.body);
   if(error){
-   throw new ExpressError(400,error);
+    let errmsg = err.details.map((el)=>el.message).join(",");
+   throw new ExpressError(400,errmsg);
   }else{
     next();
   }
@@ -36,7 +37,7 @@ const validateListing =(req,res,next) =>{
 
 //index route
 
-app.get("/listings",validateListing, wrapAsync(async (req,res)=>{
+app.get("/listings", wrapAsync(async (req,res)=>{
   const alllistings = await Listing.find({});
   res.render("../views/listings/index.ejs",{alllistings});
 }));
@@ -46,9 +47,9 @@ app.get("/listings/new", (req,res)=>{
     res.render("../views/listings/new.ejs");
 });
 
-//create roiute
 
-app.post("/listings", wrapAsync(async(req,res,next)=>{
+//create roiute
+app.post("/listings",validateListing, wrapAsync(async(req,res,next)=>{
   //let{title,description,image,price,location,country}=req.body;
   
     let listing = req.body.listing;
