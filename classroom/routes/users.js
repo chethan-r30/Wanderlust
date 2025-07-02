@@ -1,20 +1,22 @@
 const express = require("express");
-const router = express.Router;
+const router = express.Router();
 
 //USERS
 //Index-Users
-router.get("/users",(req,res)=>{
+router.get("/",(req,res)=>{
     res.send("GET for users");
 });
 //Show-users
-router.get("/users/:id",(req,res)=>{
+router.get("/:id",(req,res)=>{
     res.send("GET for show user id");
 });
 //Post-users
-router.post("/users",(req,res)=>{
+router.post("/",(req,res)=>{
     res.send("POST for users");
 });
 //DELETE-Users
-router.delete("/users/:id",(req,res)=>{
+router.delete("/:id",(req,res)=>{
     res.send("DELETE for user id");
 });
+
+module.exports = router;

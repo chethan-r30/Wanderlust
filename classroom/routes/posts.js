@@ -1,21 +1,23 @@
 const express = require("express");
-
+const router = express.Router();
 
 
 //POSTS
 //Index-posts
-router.get("/posts",(req,res)=>{
+router.get("/",(req,res)=>{
     res.send("GET for posts");
 });
 //Show-posts
-router.get("/posts/:id",(req,res)=>{
+router.get("/:id",(req,res)=>{
     res.send("GET for show post id");
 });
 //Post-posts
-app.post("/posts",(req,res)=>{
+router.post("/",(req,res)=>{
     res.send("POST for posts");
 });
 //DELETE-posts
-app.delete("/posts/:id",(req,res)=>{
+router.delete("/:id",(req,res)=>{
     res.send("DELETE for post id");
 });
+
+module.exports= router;
