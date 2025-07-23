@@ -6,13 +6,8 @@ const listingschema = new Schema({
   title: { type: String, required: true },
   description: String,
   image: {
-    type: String,
-    default:
-      "https://unsplash.com/photos/a-small-white-building-with-a-red-roof-XHti2_XGjs8",
-    set: (v) =>
-      v === ""
-        ? "https://unsplash.com/photos/a-small-white-building-with-a-red-roof-XHti2_XGjs8"
-        : v,
+     url:String,
+     filename:String,
   },
   price: Number,
   location: String,
