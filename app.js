@@ -2,7 +2,7 @@ if(process.env.NODE_ENV !="production"){
   require("dotenv").config();
 }
 
-const wrapAsync = require('./utils/WrapAsync.js');
+
 const express = require("express");
 const app = express();
 const path = require("path");
