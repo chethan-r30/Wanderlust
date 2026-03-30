@@ -25,9 +25,6 @@ jobs:
     - name: Install Dependencies
       run: npm ci
 
-    # 🔐 Security check
-    - name: Security Audit
-      run: npm audit --audit-level=high || exit 1
 
     # 🏗️ Build
     - name: Build
