@@ -36,7 +36,7 @@ jobs:
 
     - name: Start Server & Health Check
       run: |
-        nodemon server.js &
+        node server.js &
         sleep 5
         curl http://localhost:8080 || exit 1
 
